@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Pulsedin"),
         "checkYourInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Please check your internet connection"),
+        "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don\"t have an account? Signup"),
         "email": MessageLookupByLibrary.simpleMessage("Email ID *"),
@@ -51,17 +52,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong. Please try again."),
         "haveAccount": MessageLookupByLibrary.simpleMessage(
             "Already have an account? Login"),
-        "id": MessageLookupByLibrary.simpleMessage("Id :"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name *"),
+        "like": MessageLookupByLibrary.simpleMessage("Like"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "methodNotAllowed":
             MessageLookupByLibrary.simpleMessage("405 Method Not Allowed"),
-        "name": MessageLookupByLibrary.simpleMessage("Name :"),
         "password": MessageLookupByLibrary.simpleMessage("Password *"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "serverBroken":
             MessageLookupByLibrary.simpleMessage("500 Server Broken"),
+        "share": MessageLookupByLibrary.simpleMessage("Share"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("SUCCESS"),
         "tooManyRequests":

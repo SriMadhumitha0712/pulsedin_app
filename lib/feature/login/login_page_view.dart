@@ -89,7 +89,7 @@ class _RightPanel extends StatelessWidget {
             ],
           ),
           Align(
-            alignment: const Alignment(0, 0.20),
+            alignment: const Alignment(0, 0.40),
             child: SizedBox(
               width: 500,
               height: 500,
@@ -119,7 +119,7 @@ class _RightPanel extends StatelessWidget {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 17, top: 20, right: 400),
+                          const EdgeInsets.only(left: 17, top: 20, right: 250),
                       child: CustomText(
                         S.of(context).email,
                         fontSize: 16,
@@ -148,7 +148,7 @@ class _RightPanel extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         left: 17,
                         top: 20,
-                        right: 365,
+                        right: 250,
                       ),
                       child: CustomText(
                         S.of(context).password,

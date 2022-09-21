@@ -10,8 +10,13 @@ class LoginRemoteDSImpl implements LoginRemoteDS {
   LoginRemoteDSImpl(this._apiService);
 
   @override
-  Future<HttpResponse<LoginResponseEntity>> login(
-      {required String email, required String password}) {
-    return _apiService.login(LoginRequest(email: email, password: password));
+  Future<HttpResponse<LoginResponseEntity>> login({
+    required String email,
+    required String password,
+  }) {
+    return _apiService.login(LoginRequest(
+      email: email,
+      password: password,
+    ));
   }
 }

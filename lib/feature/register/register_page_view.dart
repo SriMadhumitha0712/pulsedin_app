@@ -88,7 +88,7 @@ class _RightPanel extends StatelessWidget {
         ],
       ),
       Align(
-        alignment: const Alignment(0, 0.40),
+        alignment: const Alignment(0, 0.60),
         child: SizedBox(
           width: 600,
           height: 550,
@@ -99,9 +99,9 @@ class _RightPanel extends StatelessWidget {
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  left: 148,
+                  left: 144,
                   top: 20,
-                  right: 148,
+                  right: 144,
                 ),
                 child: CustomText(S.of(context).register,
                     fontSize: 22, fontWeight: FontWeight.bold),
@@ -129,7 +129,7 @@ class _RightPanel extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 130,
+                    width: 70,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -178,7 +178,7 @@ class _RightPanel extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 17, top: 17, right: 400),
+                padding: const EdgeInsets.only(left: 17, top: 17, right: 280),
                 child: CustomText(
                   S.of(context).email,
                   fontSize: 16,
@@ -203,7 +203,7 @@ class _RightPanel extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 17, top: 17, right: 365),
+                padding: const EdgeInsets.only(left: 17, top: 17, right: 280),
                 child: CustomText(
                   S.of(context).password,
                   fontSize: 16,
@@ -282,7 +282,7 @@ class _RightPanel extends StatelessWidget {
                   ),
                 ),
                 onPressed: (() {
-                  context.beamToNamed('/login');
+                  context.beamToNamed('/feed');
                 }),
                 child: CustomText(S.of(context).haveAccount),
               ),

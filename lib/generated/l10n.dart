@@ -280,21 +280,31 @@ class S {
     );
   }
 
-  /// `Id :`
-  String get id {
+  /// `Like`
+  String get like {
     return Intl.message(
-      'Id :',
-      name: 'id',
+      'Like',
+      name: 'like',
       desc: '',
       args: [],
     );
   }
 
-  /// `Name :`
-  String get name {
+  /// `Comment`
+  String get comment {
     return Intl.message(
-      'Name :',
-      name: 'name',
+      'Comment',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get share {
+    return Intl.message(
+      'Share',
+      name: 'share',
       desc: '',
       args: [],
     );
