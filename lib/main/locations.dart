@@ -2,6 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:pulsedin_app/di/app_module.dart';
 import 'package:pulsedin_app/feature/login/login_page.dart';
+import 'package:pulsedin_app/feature/register/register_page.dart';
 import 'package:pulsedin_app/main/custom_transition_page.dart';
 import 'package:pulsedin_app/molecules/custom_text.dart';
 import 'package:pulsedin_app/utils/enums.dart';
@@ -11,12 +12,13 @@ class BeamerRoutes {
   static final routerDelegate = BeamerDelegate(
     locationBuilder: BeamerLocationBuilder(beamLocations: [
       LoginLocation(),
+      RegisterLocation(),
     ]),
     initialPath: "/login",
     notFoundPage: notFoundPage,
     guards: [
       BeamGuard(
-        pathPatterns: ["/login"],
+        pathPatterns: ["/login", "/register"],
         guardNonMatching: true,
         beamToNamed: (c, a) => "/login",
         check: (context, location) {
@@ -71,4 +73,20 @@ class LoginLocation extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ["/login"];
+}
+
+class RegisterLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      CustomTransitionPage(
+        key: const ValueKey("Register"),
+        childWidget: const RegisterPage(),
+        pageTitle: "Register",
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ["/register"];
 }

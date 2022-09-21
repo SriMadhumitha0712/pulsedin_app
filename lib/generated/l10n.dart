@@ -140,20 +140,20 @@ class S {
     );
   }
 
-  /// `Email`
+  /// `Email ID *`
   String get email {
     return Intl.message(
-      'Email',
+      'Email ID *',
       name: 'email',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password`
+  /// `Password *`
   String get password {
     return Intl.message(
-      'Password',
+      'Password *',
       name: 'password',
       desc: '',
       args: [],
@@ -165,6 +165,16 @@ class S {
     return Intl.message(
       'Login',
       name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
       desc: '',
       args: [],
     );
@@ -300,21 +310,31 @@ class S {
     );
   }
 
-  /// `First Name`
+  /// `First Name *`
   String get firstName {
     return Intl.message(
-      'First Name',
+      'First Name *',
       name: 'firstName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last Name`
+  /// `Last Name *`
   String get lastName {
     return Intl.message(
-      'Last Name',
+      'Last Name *',
       name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? Login`
+  String get haveAccount {
+    return Intl.message(
+      'Already have an account? Login',
+      name: 'haveAccount',
       desc: '',
       args: [],
     );

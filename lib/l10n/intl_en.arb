@@ -8,9 +8,10 @@
   "enterValidEmail": "Please enter a valid email",
   "error": "Error",
   "success": "SUCCESS",
-  "email": "Email",
-  "password": "Password",
+  "email": "Email ID *",
+  "password": "Password *",
   "login": "Login",
+  "register": "Register",
   "forbidden": "404 Forbidden",
   "search": "Search",
   "serverBroken": "500 Server Broken",
@@ -24,7 +25,8 @@
   "id": "Id :",
   "name": "Name :",
   "enterEmail": "Enter the email address associated with your account",
-  "firstName": "First Name",
-  "lastName": "Last Name",
+  "firstName": "First Name *",
+  "lastName": "Last Name *",
+  "haveAccount": "Already have an account? Login",
   "forgetPassword": "Forgot Password?"
 }

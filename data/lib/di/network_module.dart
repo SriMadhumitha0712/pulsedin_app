@@ -3,6 +3,7 @@
 import 'package:data/network/api_helper.dart';
 import 'package:data/network/api_service.dart';
 import 'package:data/source/remote/login_ds_impl.dart';
+import 'package:data/source/remote/register_ds_impl.dart';
 import 'package:riverpod/riverpod.dart';
 
 final dioProvider = Provider<DioHelper>(
@@ -20,6 +21,11 @@ final apiServiceProvider = Provider<ApiService>(
 
 final loginRemoteDSProvider = Provider<LoginRemoteDSImpl>(
   (ref) => LoginRemoteDSImpl(
+    ref.read(apiServiceProvider),
+  ),
+);
+final registerRemoteDSProvider = Provider<RegisterRemoteDSImpl>(
+  (ref) => RegisterRemoteDSImpl(
     ref.read(apiServiceProvider),
   ),
 );

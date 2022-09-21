@@ -22,6 +22,7 @@ class CustomText extends StatelessWidget {
   final FontWeight fontWeight;
   final FontStyle fontStyle;
   final double? letterSpacing;
+  
   const CustomText(
     this.text, {
     this.fontSize = 14,
@@ -40,7 +41,7 @@ class CustomText extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.fontStyle = FontStyle.normal,
     Key? key,
-    this.letterSpacing,
+    this.letterSpacing, 
   }) : super(key: key);
 
   @override

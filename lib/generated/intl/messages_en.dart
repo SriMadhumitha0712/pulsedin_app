@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check your internet connection"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don\"t have an account? Signup"),
-        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "email": MessageLookupByLibrary.simpleMessage("Email ID *"),
         "emptyEmailMessage":
             MessageLookupByLibrary.simpleMessage("Email can\'t be empty"),
         "enterConfirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -43,19 +43,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
-        "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "firstName": MessageLookupByLibrary.simpleMessage("First Name *"),
         "forbidden": MessageLookupByLibrary.simpleMessage("404 Forbidden"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "genericError": MessageLookupByLibrary.simpleMessage(
             "Something went wrong. Please try again."),
+        "haveAccount": MessageLookupByLibrary.simpleMessage(
+            "Already have an account? Login"),
         "id": MessageLookupByLibrary.simpleMessage("Id :"),
-        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name *"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "methodNotAllowed":
             MessageLookupByLibrary.simpleMessage("405 Method Not Allowed"),
         "name": MessageLookupByLibrary.simpleMessage("Name :"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password": MessageLookupByLibrary.simpleMessage("Password *"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "serverBroken":
             MessageLookupByLibrary.simpleMessage("500 Server Broken"),

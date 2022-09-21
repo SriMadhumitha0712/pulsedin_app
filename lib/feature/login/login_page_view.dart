@@ -70,7 +70,8 @@ class _RightPanel extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 289,
+                height: 350,
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                   gradient: RadialGradient(
@@ -118,10 +119,11 @@ class _RightPanel extends StatelessWidget {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 17, top: 20, right: 285),
+                          const EdgeInsets.only(left: 17, top: 20, right: 400),
                       child: CustomText(
                         S.of(context).email,
                         fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Padding(
@@ -146,11 +148,12 @@ class _RightPanel extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         left: 17,
                         top: 20,
-                        right: 285,
+                        right: 365,
                       ),
                       child: CustomText(
                         S.of(context).password,
                         fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Padding(
@@ -254,7 +257,7 @@ class _RightPanel extends StatelessWidget {
                         ),
                       ),
                       onPressed: (() {
-                        // Navigator.pushNamed(context, Routes.registerScreen);
+                        context.beamToNamed('/register');
                       }),
                       child: CustomText(S.of(context).dontHaveAccount),
                     ),
