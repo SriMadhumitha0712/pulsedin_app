@@ -8,6 +8,8 @@ import 'package:pulsedin_app/feature/login/login_page_view_model.dart';
 import 'package:pulsedin_app/generated/l10n.dart';
 import 'package:pulsedin_app/molecules/colour_resourse.dart';
 import 'package:pulsedin_app/molecules/custom_text.dart';
+import 'package:pulsedin_app/molecules/custom_text_field.dart';
+import 'package:pulsedin_app/molecules/image_resourse.dart';
 import 'package:pulsedin_app/utils/app_stream_builder.dart';
 import 'package:pulsedin_app/utils/extensions.dart';
 import 'package:pulsedin_app/utils/resource.dart';
@@ -41,51 +43,17 @@ class _WebLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: ScrollController(),
-      child: Column(
-        children: const [Expanded(flex: 5, child: _RightPanel())],
-      ),
-    );
-  }
-}
-
-class _LeftPanel extends StatelessWidget {
-  const _LeftPanel({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      // decoration:
-      //          BoxDecoration(gradient: ColorResource.loginBackgroundGradient),
-//       child: SingleChildScrollView(
-//         clipBehavior: Clip.antiAlias,
-//         physics: const NeverScrollableScrollPhysics(),
-//         controller: ScrollController(),
-//         child: Column(children: [
-//           const SizedBox(height: 100),
-//           CustomText(
-//             S.of(context).forEducators,
-//             fontSize: 54,
-//             fontWeight: FontWeight.bold,
-//             color: ColorResource.COLOR_FFFFFF,
-//           ),
-//           const SizedBox(height: 25),
-//           Container(
-//             margin: const EdgeInsets.symmetric(horizontal: 120),
-//             child: CustomText(
-//               S.of(context).ourMissionIs,
-//               fontSize: 24,
-//               color: ColorResource.COLOR_FFFFFF,
-//               textAlign: TextAlign.center,
-//             ),
-//           ),
-//           const SizedBox(height: 30),
-//           Image.asset(ImageResource.loginBackDrop),
-//         ]),
-//       ),
+      decoration: const BoxDecoration(
+        gradient: RadialGradient(
+          colors: [ColorResource.blue, ColorResource.navyBlue],
+        ),
+      ),
+      child: Column(
+        children: const [Expanded(flex: 5, child: _RightPanel())],
+      ),
     );
   }
 }
@@ -112,9 +80,7 @@ class _RightPanel extends StatelessWidget {
                 child: Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(''
-                            // ImageResourses.logo
-                            ),
+                        image: AssetImage(ImageResourses.logo),
                         fit: BoxFit.scaleDown),
                   ),
                 ),
@@ -132,18 +98,14 @@ class _RightPanel extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(
+                    Padding(
+                      padding: const EdgeInsets.only(
                         left: 157,
                         top: 20,
                         right: 157,
                       ),
-                      child: Text(
-                        'login',
-                        // StringResourses.login,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
+                      child: CustomText(S.of(context).login,
+                          fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -154,77 +116,89 @@ class _RightPanel extends StatelessWidget {
                       endIndent: 0,
                       color: Colors.grey,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 17, top: 20, right: 285),
-                      child: Text(
-                        'Email',
-                        //StringResourses.emailId,
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 17, top: 20, right: 285),
+                      child: CustomText(
+                        S.of(context).email,
+                        fontSize: 16,
                       ),
                     ),
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 17, right: 17, top: 15),
-                      child: TextFormField(
-                        controller: viewModel.emailController,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: ColorResource.grey,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          // hintText: StringResourses.hintEmailId,
+                      child: SizedBox(
+                        height: 60,
+                        width: 500,
+                        child: CustomTextField(
+                          fillColor: ColorResource.greyText,
+                          borderRadius: 30,
+                          hintText: S.of(context).enterYourEmail,
+                          inputTextColor: ColorResource.COLOR_000000,
+                          controller: viewModel.emailController,
+                          onFieldSubmitted: (value) => viewModel.triggerLogin(),
+                          inputFontWeight: FontWeight.bold,
+                          keyboardType: TextInputType.emailAddress,
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(
+                    Padding(
+                      padding: const EdgeInsets.only(
                         left: 17,
                         top: 20,
                         right: 285,
                       ),
-                      child: Text(
-                        'password',
-                        //StringResourses.password,
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                      child: CustomText(
+                        S.of(context).password,
+                        fontSize: 16,
                       ),
                     ),
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 17, right: 17, top: 15),
-                      child: TextFormField(
-                        obscureText: true,
-                        controller: viewModel.passwordController,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: ColorResource.grey,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          // hintText: StringResourses.hintPassword,
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.remove_red_eye),
-                            onPressed: () {},
-                          ),
-                        ),
-                      ),
+                      child: AppStreamBuilder<Resource<bool>>(
+                          initialData: Resource.success(data: true),
+                          stream: viewModel.passwordObscured,
+                          dataBuilder: (context, snapshot) {
+                            return SizedBox(
+                              height: 60,
+                              width: 500,
+                              child: CustomTextField(
+                                fillColor: ColorResource.greyText,
+                                borderRadius: 30,
+                                hintText: S.of(context).enterYourPassword,
+                                controller: viewModel.passwordController,
+                                inputTextColor: ColorResource.COLOR_000000,
+                                inputFontWeight: FontWeight.bold,
+                                isObscure: snapshot!.data!,
+                                onFieldSubmitted: (value) =>
+                                    viewModel.triggerLogin(),
+                                suffixWidget: InkWell(
+                                  onTap: () {
+                                    viewModel.passwordVisibleChange();
+                                  },
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      margin: const EdgeInsets.only(right: 10),
+                                      width: 15,
+                                      height: 12,
+                                      child: Image.asset(
+                                        ImageResourses.eye,
+                                        color: ColorResource.COLOR_000000,
+                                      )),
+                                ),
+                              ),
+                            );
+                          }),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(
+                    Padding(
+                      padding: const EdgeInsets.only(
                         left: 234,
                         top: 20,
                         right: 6,
                       ),
-                      child: Text(
-                        'forget password',
-                        //StringResourses.forgot,
-                        style: TextStyle(
-                            fontSize: 16, color: ColorResource.orange),
-                      ),
+                      child: CustomText(S.of(context).forgetPassword,
+                          fontSize: 16, color: ColorResource.orange),
                     ),
                     const SizedBox(
                       height: 20,
@@ -253,10 +227,7 @@ class _RightPanel extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: ElevatedButton(
-                        onPressed: () {
-                          //loginCubit.onLoginButtonPressed();
-                          //Navigator.pushNamed(context, Routes.feedScreen);
-                        },
+                        onPressed: viewModel.triggerLogin,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
@@ -265,15 +236,11 @@ class _RightPanel extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        child: const Text(
-                          'Login',
-                          // StringResourses.login,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: -0.34,
-                              color: ColorResource.grey),
-                        ),
+                        child: CustomText(S.of(context).login,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: -0.34,
+                            color: ColorResource.grey),
                       ),
                     ),
                     const SizedBox(
@@ -281,7 +248,7 @@ class _RightPanel extends StatelessWidget {
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                        primary: Colors.black,
+                        foregroundColor: Colors.black,
                         textStyle: const TextStyle(
                           fontSize: 17,
                         ),
@@ -289,7 +256,7 @@ class _RightPanel extends StatelessWidget {
                       onPressed: (() {
                         // Navigator.pushNamed(context, Routes.registerScreen);
                       }),
-                      child: const Text('StringResourses.dontHaveAccount'),
+                      child: CustomText(S.of(context).dontHaveAccount),
                     ),
                   ],
                 ),

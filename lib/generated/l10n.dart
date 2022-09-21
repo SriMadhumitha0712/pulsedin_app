@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Don"t have an account? Signup`
+  String get dontHaveAccount {
+    return Intl.message(
+      'Don"t have an account? Signup',
+      name: 'dontHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Something went wrong. Please try again.`
   String get genericError {
     return Intl.message(
@@ -240,36 +250,6 @@ class S {
     );
   }
 
-  /// `For Educators`
-  String get forEducators {
-    return Intl.message(
-      'For Educators',
-      name: 'forEducators',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Our mission is to provide industry-leading educational and interactive tools.`
-  String get ourMissionIs {
-    return Intl.message(
-      'Our mission is to provide industry-leading educational and interactive tools.',
-      name: 'ourMissionIs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Educators`
-  String get educators {
-    return Intl.message(
-      'Educators',
-      name: 'educators',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Enter your password`
   String get enterYourPassword {
     return Intl.message(
@@ -285,126 +265,6 @@ class S {
     return Intl.message(
       'Enter your email',
       name: 'enterYourEmail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Forget password?`
-  String get forgetPassword {
-    return Intl.message(
-      'Forget password?',
-      name: 'forgetPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Dashboard`
-  String get dashboard {
-    return Intl.message(
-      'Dashboard',
-      name: 'dashboard',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Classroom`
-  String get classroom {
-    return Intl.message(
-      'Classroom',
-      name: 'classroom',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create Classroom`
-  String get createClassroom {
-    return Intl.message(
-      'Create Classroom',
-      name: 'createClassroom',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You don't have classrooms yet. Click the add button to create one.`
-  String get classroomEmptyText {
-    return Intl.message(
-      'You don\'t have classrooms yet. Click the add button to create one.',
-      name: 'classroomEmptyText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enter your classroom name`
-  String get enterYourClassName {
-    return Intl.message(
-      'Enter your classroom name',
-      name: 'enterYourClassName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sure Pass`
-  String get surePass {
-    return Intl.message(
-      'Sure Pass',
-      name: 'surePass',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Intense PREP`
-  String get intensePREP {
-    return Intl.message(
-      'Intense PREP',
-      name: 'intensePREP',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Students list`
-  String get studentsList {
-    return Intl.message(
-      'Students list',
-      name: 'studentsList',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get cancel {
-    return Intl.message(
-      'Cancel',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Students`
-  String get students {
-    return Intl.message(
-      'Students',
-      name: 'students',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No data available`
-  String get noDataAvailable {
-    return Intl.message(
-      'No data available',
-      name: 'noDataAvailable',
       desc: '',
       args: [],
     );
@@ -430,191 +290,11 @@ class S {
     );
   }
 
-  /// `No of Students :`
-  String get noOfStudents {
-    return Intl.message(
-      'No of Students :',
-      name: 'noOfStudents',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Assignments :`
-  String get assignments {
-    return Intl.message(
-      'Assignments :',
-      name: 'assignments',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Average Score :`
-  String get averageScore {
-    return Intl.message(
-      'Average Score :',
-      name: 'averageScore',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Classroom Detail`
-  String get classroomDetail {
-    return Intl.message(
-      'Classroom Detail',
-      name: 'classroomDetail',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Enter the email address associated with your account`
   String get enterEmail {
     return Intl.message(
       'Enter the email address associated with your account',
       name: 'enterEmail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Verify Now`
-  String get verifyNow {
-    return Intl.message(
-      'Verify Now',
-      name: 'verifyNow',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reset password`
-  String get setPassword {
-    return Intl.message(
-      'Reset password',
-      name: 'setPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Confirm`
-  String get confirm {
-    return Intl.message(
-      'Confirm',
-      name: 'confirm',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enter New Password`
-  String get enterNewPassword {
-    return Intl.message(
-      'Enter New Password',
-      name: 'enterNewPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Confirm New Password`
-  String get confirmNewPassword {
-    return Intl.message(
-      'Confirm New Password',
-      name: 'confirmNewPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add Student`
-  String get addStudents {
-    return Intl.message(
-      'Add Student',
-      name: 'addStudents',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Select classroom`
-  String get selectClassRoom {
-    return Intl.message(
-      'Select classroom',
-      name: 'selectClassRoom',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All Students`
-  String get allStudents {
-    return Intl.message(
-      'All Students',
-      name: 'allStudents',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Disabled Students`
-  String get disabledStudents {
-    return Intl.message(
-      'Disabled Students',
-      name: 'disabledStudents',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bulk Import`
-  String get bulkImport {
-    return Intl.message(
-      'Bulk Import',
-      name: 'bulkImport',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Import multiple student details through Excel sheet.`
-  String get bulkImportDes {
-    return Intl.message(
-      'Import multiple student details through Excel sheet.',
-      name: 'bulkImportDes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Download sample file`
-  String get downloadSample {
-    return Intl.message(
-      'Download sample file',
-      name: 'downloadSample',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Import List`
-  String get importList {
-    return Intl.message(
-      'Import List',
-      name: 'importList',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add student manually`
-  String get addStudentsManually {
-    return Intl.message(
-      'Add student manually',
-      name: 'addStudentsManually',
       desc: '',
       args: [],
     );
@@ -640,31 +320,11 @@ class S {
     );
   }
 
-  /// `Add to List`
-  String get addToList {
+  /// `Forgot Password?`
+  String get forgetPassword {
     return Intl.message(
-      'Add to List',
-      name: 'addToList',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `select`
-  String get select {
-    return Intl.message(
-      'select',
-      name: 'select',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Selected`
-  String get selected {
-    return Intl.message(
-      'Selected',
-      name: 'selected',
+      'Forgot Password?',
+      name: 'forgetPassword',
       desc: '',
       args: [],
     );

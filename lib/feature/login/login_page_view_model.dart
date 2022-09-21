@@ -1,4 +1,3 @@
-
 import 'package:domain/usecase/login/login_usecase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pulsedin_app/base/base_page_view_model.dart';
@@ -14,8 +13,6 @@ class LoginPageViewModel extends BasePageViewModel with LoginViewModelStreams {
   Stream<Resource<bool>> get isLoggedIn => _loginResponse.stream;
 
   Stream<Resource<bool>> get passwordObscured => _passwordObscure.stream;
-
-  //String trailingImage = ImageResource.moreHide;
 
   final LoginUseCase _loginUseCase;
   LoginPageViewModel(
@@ -47,11 +44,6 @@ class LoginPageViewModel extends BasePageViewModel with LoginViewModelStreams {
   void passwordVisibleChange() {
     _passwordObscure
         .add(Resource.success(data: !_passwordObscure.value!.data!));
-    // if (_passwordObscure.value!.data!) {
-    //   trailingImage = ImageResource.moreHide;
-    // } else {
-    //   trailingImage = ImageResource.openEye;
-    // }
   }
 }
 
