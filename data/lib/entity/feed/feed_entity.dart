@@ -1,17 +1,18 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names
 
+import 'package:domain/model/feed_data.dart';
+import 'package:domain/utils/base_layer_data_transformer.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'feed_entity.g.dart';
 
 @JsonSerializable()
-class FeedEntity {
+class FeedEntity implements BaseLayerDataTransformer<FeedEntity, FeedData> {
   final int? id;
   final int? user_id;
   final int? post_id;
   final String? created_at;
   final String? updated_at;
-  @JsonKey(name: 'post')
   Post? post;
 
   FeedEntity({
@@ -27,10 +28,27 @@ class FeedEntity {
   factory FeedEntity.fromJson(Map<String, dynamic> json) =>
       _$FeedEntityFromJson(json);
   Map<String, dynamic> toJson() => _$FeedEntityToJson(this);
+
+  @override
+  FeedEntity restore(FeedData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  FeedData transform() {
+    return FeedData(
+      id: id,
+      user_id: user_id,
+      post_id: post_id,
+      postData: post!.transform(),
+      created_at: created_at,
+      updated_at: updated_at,
+    );
+  }
 }
 
 @JsonSerializable()
-class Post {
+class Post implements BaseLayerDataTransformer<Post, PostData> {
   final int? id;
   @JsonKey(name: 'payload')
   Payload? payload;
@@ -43,10 +61,23 @@ class Post {
   @override
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
   Map<String, dynamic> toJson() => _$PostToJson(this);
+
+  @override
+  Post restore(PostData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  PostData transform() {
+    return PostData(
+      id: id,
+      payloadData: payload!.transform(),
+    );
+  }
 }
 
 @JsonSerializable()
-class Payload {
+class Payload implements BaseLayerDataTransformer<Payload, PayloadData> {
   final int? id;
   final int? user_id;
   final String? post_type;
@@ -87,10 +118,36 @@ class Payload {
   factory Payload.fromJson(Map<String, dynamic> json) =>
       _$PayloadFromJson(json);
   Map<String, dynamic> toJson() => _$PayloadToJson(this);
+
+  @override
+  Payload restore(PayloadData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  PayloadData transform() {
+    return PayloadData(
+      id: id,
+      userData: user!.transform(),
+      user_id: user_id,
+      post_type: post_type,
+      description: description,
+      like_count: like_count,
+      comment_count: comment_count,
+      share_count: share_count,
+      created_at: created_at,
+      updated_atp: updated_atp,
+      is_like: is_like,
+      nurse_infoData: nurseInfo!.transform(),
+      visibilityData: visibility!.transform(),
+      post_mediaData: postMedia?.map((e) => e.transform()).toList(),
+    );
+  }
 }
 
 @JsonSerializable()
-class Visibility {
+class Visibility
+    implements BaseLayerDataTransformer<Visibility, VisibilityData> {
   final int? id;
   final String? visibility;
 
@@ -103,10 +160,20 @@ class Visibility {
   factory Visibility.fromJson(Map<String, dynamic> json) =>
       _$VisibilityFromJson(json);
   Map<String, dynamic> toJson() => _$VisibilityToJson(this);
+
+  @override
+  Visibility restore(VisibilityData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  VisibilityData transform() {
+    return VisibilityData(id: id, visibility: visibility);
+  }
 }
 
 @JsonSerializable()
-class NurseInfo {
+class NurseInfo implements BaseLayerDataTransformer<NurseInfo, NurseInfoData> {
   final int? id;
   final int? user_id;
   final String? first_name;
@@ -135,10 +202,31 @@ class NurseInfo {
   factory NurseInfo.fromJson(Map<String, dynamic> json) =>
       _$NurseInfoFromJson(json);
   Map<String, dynamic> toJson() => _$NurseInfoToJson(this);
+
+  @override
+  NurseInfo restore(NurseInfoData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  NurseInfoData transform() {
+    return NurseInfoData(
+      id: id,
+      user_id: user_id,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      professional_title: professional_title,
+      profile_picture: profile_picture,
+      profile_picture_thumbnail: profile_picture_thumbnail,
+      cover_picture: cover_picture,
+      cover_picture_thumbnail: cover_picture_thumbnail,
+    );
+  }
 }
 
 @JsonSerializable()
-class User {
+class User implements BaseLayerDataTransformer<User, UserData> {
   final int? id;
   final String? email;
   final String? user_type;
@@ -156,10 +244,25 @@ class User {
   @override
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  @override
+  User restore(UserData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  UserData transform() {
+    return UserData(
+        id: id,
+        email: email,
+        user_type: user_type,
+        created_at: created_at,
+        updated_at: updated_at);
+  }
 }
 
 @JsonSerializable()
-class PostMedia {
+class PostMedia implements BaseLayerDataTransformer<PostMedia, PostMediaData> {
   final int? id;
   final int? post_id;
   final String? media_url;
@@ -180,4 +283,19 @@ class PostMedia {
   factory PostMedia.fromJson(Map<String, dynamic> json) =>
       _$PostMediaFromJson(json);
   Map<String, dynamic> toJson() => _$PostMediaToJson(this);
+
+  @override
+  PostMedia restore(PostMediaData data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  PostMediaData transform() {
+    return PostMediaData(
+        post_id: post_id,
+        media_url: media_url,
+        media_thumbnail: media_thumbnail,
+        media_height: media_height,
+        media_width: media_width);
+  }
 }
