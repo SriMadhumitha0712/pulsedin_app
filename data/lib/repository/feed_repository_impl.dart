@@ -12,7 +12,7 @@ class FeedRepositoryImpl extends FeedRepository {
   FeedRepositoryImpl(this._remoteDS);
 
   @override
-  Future<Either<NetworkError, FeedResponseEntity>> feed(
+  Future<Either<NetworkError, FeedData>> feed(
       ) async {
     final result = await safeApiCall(
       _remoteDS.feed(),
@@ -20,7 +20,7 @@ class FeedRepositoryImpl extends FeedRepository {
 
     return result!.fold(
       (l) => Left(l),
-      (r) => Right(r.data),
+      (r) => Right(r.data.feeds!),
     );
   }
 }

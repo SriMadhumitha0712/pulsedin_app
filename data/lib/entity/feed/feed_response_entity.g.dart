@@ -8,22 +8,26 @@ part of 'feed_response_entity.dart';
 
 FeedResponseEntity _$FeedResponseEntityFromJson(Map<String, dynamic> json) =>
     FeedResponseEntity(
-      feedsData: json['feeds'] == null
+      status: json['status'] as bool?,
+      feeds: json['feeds'] == null
           ? null
-          : FeedsData.fromJson(json['feeds'] as Map<String, dynamic>),
+          : FeedData.fromJson(json['feeds'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$FeedResponseEntityToJson(FeedResponseEntity instance) =>
     <String, dynamic>{
-      'feeds': instance.feedsData,
+      'status': instance.status,
+      'feeds': instance.feeds,
     };
 
-FeedsData _$FeedsDataFromJson(Map<String, dynamic> json) => FeedsData(
-      datas: (json['data'] as List<dynamic>?)
-          ?.map((e) => FeedEntity.fromJson(e as Map<String, dynamic>))
+FeedData _$FeedDataFromJson(Map<String, dynamic> json) => FeedData(
+      current_page: json['current_page'] as int?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$FeedsDataToJson(FeedsData instance) => <String, dynamic>{
-      'data': instance.datas,
+Map<String, dynamic> _$FeedDataToJson(FeedData instance) => <String, dynamic>{
+      'current_page': instance.current_page,
+      'data': instance.data,
     };

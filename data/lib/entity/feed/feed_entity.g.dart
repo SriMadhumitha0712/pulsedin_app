@@ -6,7 +6,7 @@ part of 'feed_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FeedEntity _$FeedEntityFromJson(Map<String, dynamic> json) => FeedEntity(
+Data _$DataFromJson(Map<String, dynamic> json) => Data(
       id: json['id'] as int?,
       user_id: json['user_id'] as int?,
       post_id: json['post_id'] as int?,
@@ -14,11 +14,10 @@ FeedEntity _$FeedEntityFromJson(Map<String, dynamic> json) => FeedEntity(
       updated_at: json['updated_at'] as String?,
       post: json['post'] == null
           ? null
-          : PostEntity.fromJson(json['post'] as Map<String, dynamic>),
+          : Post.fromJson(json['post'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$FeedEntityToJson(FeedEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
       'user_id': instance.user_id,
       'post_id': instance.post_id,
@@ -27,21 +26,19 @@ Map<String, dynamic> _$FeedEntityToJson(FeedEntity instance) =>
       'post': instance.post,
     };
 
-PostEntity _$PostEntityFromJson(Map<String, dynamic> json) => PostEntity(
+Post _$PostFromJson(Map<String, dynamic> json) => Post(
       id: json['id'] as int?,
       payload: json['payload'] == null
           ? null
-          : PayloadEntity.fromJson(json['payload'] as Map<String, dynamic>),
+          : Payload.fromJson(json['payload'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PostEntityToJson(PostEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'id': instance.id,
       'payload': instance.payload,
     };
 
-PayloadEntity _$PayloadEntityFromJson(Map<String, dynamic> json) =>
-    PayloadEntity(
+Payload _$PayloadFromJson(Map<String, dynamic> json) => Payload(
       id: json['id'] as int?,
       user_id: json['user_id'] as int?,
       post_type: json['post_type'] as String?,
@@ -54,22 +51,19 @@ PayloadEntity _$PayloadEntityFromJson(Map<String, dynamic> json) =>
       is_like: json['is_like'] as bool?,
       nurseInfo: json['nurse_info'] == null
           ? null
-          : NurseInfoEntity.fromJson(
-              json['nurse_info'] as Map<String, dynamic>),
+          : NurseInfo.fromJson(json['nurse_info'] as Map<String, dynamic>),
       user: json['user'] == null
           ? null
-          : UserEntity.fromJson(json['user'] as Map<String, dynamic>),
+          : User.fromJson(json['user'] as Map<String, dynamic>),
       visibility: json['visibility'] == null
           ? null
-          : VisibilityEntity.fromJson(
-              json['visibility'] as Map<String, dynamic>),
+          : Visibility.fromJson(json['visibility'] as Map<String, dynamic>),
       postMedia: (json['post_media'] as List<dynamic>?)
-          ?.map((e) => PostMediaEntity.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => PostMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$PayloadEntityToJson(PayloadEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PayloadToJson(Payload instance) => <String, dynamic>{
       'id': instance.id,
       'user_id': instance.user_id,
       'post_type': instance.post_type,
@@ -86,20 +80,18 @@ Map<String, dynamic> _$PayloadEntityToJson(PayloadEntity instance) =>
       'visibility': instance.visibility,
     };
 
-VisibilityEntity _$VisibilityEntityFromJson(Map<String, dynamic> json) =>
-    VisibilityEntity(
+Visibility _$VisibilityFromJson(Map<String, dynamic> json) => Visibility(
       id: json['id'] as int?,
       visibility: json['visibility'] as String?,
     );
 
-Map<String, dynamic> _$VisibilityEntityToJson(VisibilityEntity instance) =>
+Map<String, dynamic> _$VisibilityToJson(Visibility instance) =>
     <String, dynamic>{
       'id': instance.id,
       'visibility': instance.visibility,
     };
 
-NurseInfoEntity _$NurseInfoEntityFromJson(Map<String, dynamic> json) =>
-    NurseInfoEntity(
+NurseInfo _$NurseInfoFromJson(Map<String, dynamic> json) => NurseInfo(
       id: json['id'] as int?,
       user_id: json['user_id'] as int?,
       first_name: json['first_name'] as String?,
@@ -112,8 +104,7 @@ NurseInfoEntity _$NurseInfoEntityFromJson(Map<String, dynamic> json) =>
       cover_picture_thumbnail: json['cover_picture_thumbnail'] as String?,
     );
 
-Map<String, dynamic> _$NurseInfoEntityToJson(NurseInfoEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$NurseInfoToJson(NurseInfo instance) => <String, dynamic>{
       'id': instance.id,
       'user_id': instance.user_id,
       'first_name': instance.first_name,
@@ -126,7 +117,7 @@ Map<String, dynamic> _$NurseInfoEntityToJson(NurseInfoEntity instance) =>
       'cover_picture_thumbnail': instance.cover_picture_thumbnail,
     };
 
-UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
+User _$UserFromJson(Map<String, dynamic> json) => User(
       id: json['id'] as int?,
       email: json['email'] as String?,
       user_type: json['user_type'] as String?,
@@ -134,8 +125,7 @@ UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
       updated_at: json['updated_at'] as String?,
     );
 
-Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'user_type': instance.user_type,
@@ -143,8 +133,7 @@ Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
       'updated_at': instance.updated_at,
     };
 
-PostMediaEntity _$PostMediaEntityFromJson(Map<String, dynamic> json) =>
-    PostMediaEntity(
+PostMedia _$PostMediaFromJson(Map<String, dynamic> json) => PostMedia(
       post_id: json['post_id'] as int?,
       media_url: json['media_url'] as String?,
       media_thumbnail: json['media_thumbnail'] as String?,
@@ -153,8 +142,7 @@ PostMediaEntity _$PostMediaEntityFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
     );
 
-Map<String, dynamic> _$PostMediaEntityToJson(PostMediaEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PostMediaToJson(PostMedia instance) => <String, dynamic>{
       'id': instance.id,
       'post_id': instance.post_id,
       'media_url': instance.media_url,
