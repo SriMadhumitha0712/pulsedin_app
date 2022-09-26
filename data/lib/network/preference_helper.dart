@@ -1,11 +1,7 @@
-// ignore_for_file: unused_element
-
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 
 import 'package:domain/error/local_error.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceHelper {
@@ -45,13 +41,5 @@ class PreferenceHelper {
   static Future clearStorage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-  }
-
-  static Map<String, dynamic> _parseAndDecode(String response) {
-    return jsonDecode(response) as Map<String, dynamic>;
-  }
-
-  static Future<Map<String, dynamic>> _parseJson(String? text) {
-    return compute(_parseAndDecode, text!);
   }
 }

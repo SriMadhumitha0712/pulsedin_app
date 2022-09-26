@@ -1,4 +1,6 @@
 import 'package:beamer/beamer.dart';
+import 'package:domain/bus/event_bus.dart';
+import 'package:domain/bus/un_authenticated_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +19,19 @@ class App extends ConsumerWidget {
   Widget build(context, ref) {
     return BaseWidget<AppViewModel>(
       providerBase: appViewModelProvider,
+      onModelReady: (model) {
+        model.authStateStream.listen((event) {
+          if (isDoneInitialized) {
+            model.currentToken.listen((event) {
+              BeamerRoutes.routerDelegate.update();
+            });
+          }
+          isDoneInitialized = true;
+        });
+        eventBus.on<UnAuthenticatedEvent>().listen((event) {
+          model.logout();
+        });
+      },
       builder: (context, appModel, child) {
         return MaterialApp.router(
           routerDelegate: BeamerRoutes.routerDelegate,

@@ -6,7 +6,7 @@ class BaseEquatable extends Equatable {
 
   @override
   String toString() {
-    // ignore: no_runtimetype_tostring
+   
     return runtimeType.toString();
   }
 }

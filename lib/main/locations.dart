@@ -20,12 +20,25 @@ class BeamerRoutes {
     notFoundPage: notFoundPage,
     guards: [
       BeamGuard(
-        pathPatterns: ["/login", "/register", "/feed"],
+        pathPatterns: [
+          "/login",
+          "/register",
+        ],
         guardNonMatching: true,
         beamToNamed: (c, a) => "/login",
         check: (context, location) {
           final viewModel = context.read(appViewModelProvider);
           return viewModel.authState != AuthenticationStatus.UNAUTHENTICATED;
+        },
+      ),
+      BeamGuard(
+        pathPatterns: [
+          "/login",
+        ],
+        beamToNamed: (c, a) => "/feed",
+        check: (context, location) {
+          final viewModel = context.read(appViewModelProvider);
+          return viewModel.authState != AuthenticationStatus.AUTHENTICATED;
         },
       ),
     ],

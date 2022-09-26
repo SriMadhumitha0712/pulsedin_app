@@ -21,7 +21,6 @@ class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
   _BaseWidget<T> createState() => _BaseWidget<T>();
 }
 
-
 class _BaseWidget<T extends ChangeNotifier> extends State<BaseWidget<T>> {
   T? _model;
 

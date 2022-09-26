@@ -1,3 +1,4 @@
+import 'package:data/network/preference_helper.dart';
 import 'package:domain/usecase/login/login_usecase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pulsedin_app/base/base_page_view_model.dart';
@@ -15,6 +16,7 @@ class LoginPageViewModel extends BasePageViewModel with LoginViewModelStreams {
   Stream<Resource<bool>> get passwordObscured => _passwordObscure.stream;
 
   final LoginUseCase _loginUseCase;
+
   LoginPageViewModel(
     this._loginUseCase,
   ) {
@@ -32,6 +34,11 @@ class LoginPageViewModel extends BasePageViewModel with LoginViewModelStreams {
           showToastWithError(event.appError!);
           showErrorState();
         }
+        if (event.status == Status.SUCCESS) {
+          await PreferenceHelper.saveToken(event.data!.token);
+          _loginResponse.add(Resource.success(data: true));
+          // print(' token : ${event.data!.token}');
+        }
       });
     });
   }
@@ -48,10 +55,8 @@ class LoginPageViewModel extends BasePageViewModel with LoginViewModelStreams {
 }
 
 mixin LoginViewModelStreams {
-  // Request Streams
   final _loginRequest = AppStream<LoginUseCaseParams>();
 
-  // Response Streams
   final _loginResponse = AppStream<Resource<bool>>(
       preserveState: true, initialValue: Resource.success(data: false));
 

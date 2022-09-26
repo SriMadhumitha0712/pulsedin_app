@@ -1,31 +1,56 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable
 
 import 'package:data/entity/feed/feed_entity.dart';
+import 'package:domain/model/feed_response.dart';
+import 'package:domain/utils/base_layer_data_transformer.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'feed_response_entity.g.dart';
 
 @JsonSerializable()
-class FeedResponseEntity {
-  Feeds? feeds;
+class FeedResponseEntity
+    implements BaseLayerDataTransformer<FeedResponseEntity, FeedResponse> {
+  FeedsData? feedsData;
+
   FeedResponseEntity({
-    this.feeds,
+    this.feedsData,
   });
 
   @override
   factory FeedResponseEntity.fromJson(Map<String, dynamic> json) =>
       _$FeedResponseEntityFromJson(json);
   Map<String, dynamic> toJson() => _$FeedResponseEntityToJson(this);
+
+  @override
+  FeedResponseEntity restore(FeedResponse data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  FeedResponse transform() {
+    return FeedResponse(feeds: feedsData!.transform());
+  }
 }
 
 @JsonSerializable()
-class Feeds {
-  List<FeedEntity>? data;
-  Feeds({
-    this.data,
+class FeedsData implements BaseLayerDataTransformer<FeedsData, Feeds> {
+  List<FeedEntity>? datas;
+  FeedsData({
+    this.datas,
   });
 
   @override
-  factory Feeds.fromJson(Map<String, dynamic> json) => _$FeedsFromJson(json);
-  Map<String, dynamic> toJson() => _$FeedsToJson(this);
+  factory FeedsData.fromJson(Map<String, dynamic> json) =>
+      _$FeedsDataFromJson(json);
+  Map<String, dynamic> toJson() => _$FeedsDataToJson(this);
+
+  @override
+  FeedsData restore(Feeds data) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Feeds transform() {
+    return Feeds(data: datas);
+  }
 }

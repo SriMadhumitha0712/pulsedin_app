@@ -282,7 +282,7 @@ class _RightPanel extends StatelessWidget {
                   ),
                 ),
                 onPressed: (() {
-                  context.beamToNamed('/feed');
+                  context.beamToNamed('/login');
                 }),
                 child: CustomText(S.of(context).haveAccount),
               ),
