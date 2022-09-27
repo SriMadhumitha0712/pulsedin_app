@@ -7,6 +7,7 @@ import 'package:domain/repository/feed_repository.dart';
 
 
 class FeedRepositoryImpl extends FeedRepository {
+  
   final FeedRemoteDS _remoteDS;
 
   FeedRepositoryImpl(this._remoteDS);

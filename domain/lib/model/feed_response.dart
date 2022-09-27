@@ -8,7 +8,7 @@ class FeedResponse {
 }
 
 class Feeds {
-  List<FeedEntity>? data;
+  List<Data>? data;
   Feeds({
     this.data,
   });

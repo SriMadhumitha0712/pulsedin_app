@@ -6,14 +6,13 @@ import 'package:domain/repository/feed_repository.dart';
 import 'package:domain/usecase/base/base_usercase.dart';
 import 'package:domain/usecase/base/params.dart';
 
-class FeedUseCase
-    extends BaseUseCase<BaseError, FeedUseCaseParams, FeedResponseEntity> {
+class FeedUseCase extends BaseUseCase<BaseError, FeedUseCaseParams, FeedData> {
   final FeedRepository _repository;
 
   FeedUseCase(this._repository);
 
   @override
-  Future<Either<BaseError, FeedResponseEntity>> execute(
+  Future<Either<BaseError, FeedData>> execute(
       {required FeedUseCaseParams params}) async {
     return await _repository.feed();
   }

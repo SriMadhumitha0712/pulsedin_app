@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 class CustomScaffold extends StatelessWidget {
   final AppBar? appBar;
+  final BottomNavigationBar? bottomNavigationBar;
   final Widget? body;
   final Color color;
   final bool isBottomReSize;
@@ -22,6 +23,7 @@ class CustomScaffold extends StatelessWidget {
       this.floatingActionButton,
       this.endDrawer,
       this.globalKey,
+      this.bottomNavigationBar,
       this.statusColor,
       Key? key})
       : super(key: key);
@@ -38,6 +40,7 @@ class CustomScaffold extends StatelessWidget {
         child: Scaffold(
             resizeToAvoidBottomInset: isBottomReSize,
             backgroundColor: color,
+            bottomNavigationBar: bottomNavigationBar,
             key: globalKey,
             floatingActionButton: floatingActionButton,
             appBar: appBar,
