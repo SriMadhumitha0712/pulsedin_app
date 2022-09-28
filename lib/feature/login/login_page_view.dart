@@ -230,7 +230,10 @@ class _RightPanel extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: ElevatedButton(
-                        onPressed: viewModel.triggerLogin,
+                        onPressed: () async {
+                          viewModel.triggerLogin();
+                          context.beamToNamed('/feed');
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,

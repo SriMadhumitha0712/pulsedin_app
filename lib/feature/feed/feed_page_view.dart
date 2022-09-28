@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:pulsedin_app/base/base_page.dart';
+import 'package:pulsedin_app/di/app_module.dart';
 import 'package:pulsedin_app/di/feed_module.dart';
 import 'package:pulsedin_app/feature/feed/feed_page_view_model.dart';
 import 'package:pulsedin_app/generated/l10n.dart';
@@ -27,69 +28,71 @@ class FeedPageView extends BasePageViewWidget<FeedPageViewModel> {
   Widget build(BuildContext context, FeedPageViewModel model) {
     int selectedIndex = 0;
     return CustomScaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey.withOpacity(.60),
-          unselectedFontSize: 14,
-          selectedFontSize: 10,
-          selectedIconTheme: const IconThemeData(
-            color: Colors.grey,
-          ),
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-          currentIndex: selectedIndex,
-          onTap: (int index) {
-            selectedIndex = index;
-          },
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: IconButton(
-                icon: const Icon(
-                  Icons.home_sharp,
-                  color: Colors.blue,
-                ),
-                onPressed: () {},
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                icon: const Icon(Icons.groups),
-                onPressed: () {},
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                icon: const Icon(Icons.person),
-                onPressed: () {},
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () {
-                  context.beamToNamed('/login');
-                },
-              ),
-              label: '',
-            ),
-          ],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey.withOpacity(.60),
+        unselectedFontSize: 14,
+        selectedFontSize: 10,
+        selectedIconTheme: const IconThemeData(
+          color: Colors.grey,
         ),
-        body: ScreenTypeLayout.builder(
-          desktop: (BuildContext context) => const _WebLayout(),
-          mobile: (BuildContext context) => const _MobileLayout(),
-          tablet: (BuildContext context) => const _MobileLayout(),
-        ));
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        currentIndex: selectedIndex,
+        onTap: (int index) {
+          selectedIndex = index;
+        },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.home_sharp,
+                color: Colors.blue,
+              ),
+              onPressed: () {},
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(Icons.groups),
+              onPressed: () {},
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(Icons.notifications),
+              onPressed: () {},
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {
+               Navigator.pop(context);
+               context.read(appViewModelProvider).logout();
+              },
+            ),
+            label: '',
+          ),
+        ],
+      ),
+      body: ScreenTypeLayout.builder(
+        desktop: (BuildContext context) => const _WebLayout(),
+        mobile: (BuildContext context) => const _MobileLayout(),
+        tablet: (BuildContext context) => const _MobileLayout(),
+      ),
+    );
   }
 }
 
@@ -195,7 +198,7 @@ class _RightPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read(feedModuleProvider);
-  
+
     return Column(
       children: [
         Stack(
@@ -331,7 +334,7 @@ class Post extends StatelessWidget {
                             left: 13,
                             top: 14,
                           ),
-                          child: datas[indexs].post!.payload!.nurseInfo != null
+                          child: datas[indexs].post!.payload != null
                               ? CircleAvatar(
                                   radius: 27,
                                   backgroundImage: NetworkImage(datas[indexs]
@@ -356,7 +359,7 @@ class Post extends StatelessWidget {
                                 right: 90,
                               ),
                               child:
-                                  datas[indexs].post!.payload!.nurseInfo != null
+                                  datas[indexs].post!.payload != null
                                       ? Text(
                                           datas[indexs]
                                               .post!
@@ -390,7 +393,7 @@ class Post extends StatelessWidget {
                                   ),
                                   child: Text(
                                     Jiffy(
-                                      datas[indexs].post!.payload!.created_at!,
+                                     // datas[indexs].post!.payload!.created_at!,
                                     ).endOf(Units.MINUTE).fromNow(),
                                     style: const TextStyle(
                                       color: ColorResource.ash,
@@ -427,7 +430,7 @@ class Post extends StatelessWidget {
                             right: 5,
                           ),
                           child:
-                              datas[indexs].post!.payload!.description != null
+                              datas[indexs].post!.payload != null
                                   ? Text(
                                       textAlign: TextAlign.start,
                                       datas[indexs].post!.payload!.description!,
