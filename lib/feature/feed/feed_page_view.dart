@@ -79,8 +79,8 @@ class FeedPageView extends BasePageViewWidget<FeedPageViewModel> {
             icon: IconButton(
               icon: const Icon(Icons.more_vert),
               onPressed: () {
-               Navigator.pop(context);
-               context.read(appViewModelProvider).logout();
+                Navigator.pop(context);
+                context.read(appViewModelProvider).logout();
               },
             ),
             label: '',
@@ -358,19 +358,18 @@ class Post extends StatelessWidget {
                                 top: 10,
                                 right: 90,
                               ),
-                              child:
-                                  datas[indexs].post!.payload != null
-                                      ? Text(
-                                          datas[indexs]
-                                              .post!
-                                              .payload!
-                                              .nurseInfo!
-                                              .first_name!,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        )
-                                      : const Text('post'),
+                              child: datas[indexs].post!.payload != null
+                                  ? Text(
+                                      datas[indexs]
+                                          .post!
+                                          .payload!
+                                          .nurseInfo!
+                                          .first_name!,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  : const Text('post'),
                             ),
                             Row(
                               children: [
@@ -393,7 +392,7 @@ class Post extends StatelessWidget {
                                   ),
                                   child: Text(
                                     Jiffy(
-                                     // datas[indexs].post!.payload!.created_at!,
+                                      datas[indexs].post!.payload!.created_at!,
                                     ).endOf(Units.MINUTE).fromNow(),
                                     style: const TextStyle(
                                       color: ColorResource.ash,
@@ -429,16 +428,15 @@ class Post extends StatelessWidget {
                             left: 10,
                             right: 5,
                           ),
-                          child:
-                              datas[indexs].post!.payload != null
-                                  ? Text(
-                                      textAlign: TextAlign.start,
-                                      datas[indexs].post!.payload!.description!,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    )
-                                  : const Text('empty'),
+                          child: datas[indexs].post!.payload != null
+                              ? Text(
+                                  textAlign: TextAlign.start,
+                                  datas[indexs].post!.payload!.description!,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                )
+                              : const Text('empty'),
                         ),
                       ],
                     ),
