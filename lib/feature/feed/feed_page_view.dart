@@ -243,11 +243,9 @@ class _RightPanel extends StatelessWidget {
               return Column(children: const [CircularProgressIndicator()]);
             }
             final List<Data> datas = snapshot.data!;
-
             if (datas.isEmpty) {
               return Container();
             }
-
             return RefreshIndicator(
               backgroundColor: ColorResource.COLOR_000000,
               onRefresh: () async {
@@ -293,7 +291,6 @@ class _MobileLayout extends StatelessWidget {
     return const _RightPanel();
   }
 }
-
 class Post extends StatelessWidget {
   final int indexs;
 
@@ -307,318 +304,319 @@ class Post extends StatelessWidget {
     final viewModel = context.read(feedModuleProvider);
 
     return AppStreamBuilder<Resource<List<Data>>>(
-        initialData: Resource.loading(),
-        stream: viewModel.feeds,
-        dataBuilder: (context, snapshot) {
-          if (snapshot!.status == Status.LOADING) {
-            return Column(children: const [CircularProgressIndicator()]);
-          }
-          final List<Data> datas = snapshot.data!;
+      initialData: Resource.loading(),
+      stream: viewModel.feeds,
+      dataBuilder: (context, snapshot) {
+        if (snapshot!.status == Status.LOADING) {
+          return Column(children: const [CircularProgressIndicator()]);
+        }
+        final List<Data> datas = snapshot.data!;
 
-          if (datas.isEmpty) {
-            return Container();
-          }
-          return Center(
-            child: Column(children: [
-              Card(
-                color: ColorResource.cardlightBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 13,
-                            top: 14,
-                          ),
-                          child: datas[indexs].post!.payload != null
-                              ? CircleAvatar(
-                                  radius: 27,
-                                  backgroundImage: NetworkImage(datas[indexs]
-                                              .post!
-                                              .payload!
-                                              .nurseInfo!
-                                              .profile_picture !=
-                                          null
-                                      ? 'https://image-dev.pulsayte.com/${datas[indexs].post!.payload!.nurseInfo!.profile_picture}'
-                                      : ''),
-                                )
-                              : const CircleAvatar(
-                                  radius: 27,
-                                ),
+        if (datas.isEmpty) {
+          return Container();
+        }
+        return Center(
+          child: Column(children: [
+            Card(
+              color: ColorResource.cardlightBlue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 13,
+                          top: 14,
                         ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 12,
-                                top: 10,
-                                right: 90,
+                        child: datas[indexs].post!.payload != null
+                            ? CircleAvatar(
+                                radius: 27,
+                                backgroundImage: NetworkImage(datas[indexs]
+                                            .post!
+                                            .payload!
+                                            .nurseInfo!
+                                            .profile_picture !=
+                                        null
+                                    ? 'https://image-dev.pulsayte.com/${datas[indexs].post!.payload!.nurseInfo!.profile_picture}'
+                                    : ''),
+                              )
+                            : const CircleAvatar(
+                                radius: 27,
                               ),
-                              child: datas[indexs].post!.payload != null
-                                  ? Text(
-                                      datas[indexs]
-                                          .post!
-                                          .payload!
-                                          .nurseInfo!
-                                          .first_name!,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    )
-                                  : const Text('post'),
-                            ),
-                            Row(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(
-                                    top: 10,
-                                    left: 37,
-                                  ),
-                                  child: Image(
-                                    color: ColorResource.lightAsh,
-                                    image: AssetImage(
-                                      ImageResourses.clock,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
-                                    left: 7,
-                                  ),
-                                  child: Text(
-                                    Jiffy(
-                                      datas[indexs].post!.payload!.created_at!,
-                                    ).endOf(Units.MINUTE).fromNow(),
-                                    style: const TextStyle(
-                                      color: ColorResource.ash,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 10,
-                            left: 40,
-                          ),
-                          child: IconButton(
-                            color: ColorResource.ash,
-                            iconSize: 30,
-                            onPressed: () {},
-                            icon: const Icon(Icons.more_vert_outlined),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            left: 10,
-                            right: 5,
-                          ),
-                          child: datas[indexs].post!.payload != null
-                              ? Text(
-                                  textAlign: TextAlign.start,
-                                  datas[indexs].post!.payload!.description!,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                )
-                              : const Text('empty'),
-                        ),
-                      ],
-                    ),
-                    Media(
-                      dataIndex: indexs,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(10.0),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(),
-                      child: Row(
+                      ),
+                      Column(
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                              left: 11,
+                              left: 12,
+                              top: 10,
+                              right: 90,
                             ),
-                            child: Image.asset(
+                            child: datas[indexs].post!.payload != null
+                                ? Text(
+                                    datas[indexs]
+                                        .post!
+                                        .payload!
+                                        .nurseInfo!
+                                        .first_name!,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                : const Text('post'),
+                          ),
+                          Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(
+                                  top: 10,
+                                  left: 37,
+                                ),
+                                child: Image(
+                                  color: ColorResource.lightAsh,
+                                  image: AssetImage(
+                                    ImageResourses.clock,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 10,
+                                  left: 7,
+                                ),
+                                child: Text(
+                                  Jiffy(
+                                    datas[indexs].post!.payload!.created_at!,
+                                  ).endOf(Units.MINUTE).fromNow(),
+                                  style: const TextStyle(
+                                    color: ColorResource.ash,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                          left: 40,
+                        ),
+                        child: IconButton(
+                          color: ColorResource.ash,
+                          iconSize: 30,
+                          onPressed: () {},
+                          icon: const Icon(Icons.more_vert_outlined),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                          left: 10,
+                          right: 5,
+                        ),
+                        child: datas[indexs].post!.payload != null
+                            ? Text(
+                                textAlign: TextAlign.start,
+                                datas[indexs].post!.payload!.description!,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                ),
+                              )
+                            : const Text('empty'),
+                      ),
+                    ],
+                  ),
+                  Media(
+                    dataIndex: indexs,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 11,
+                          ),
+                          child: Image.asset(
+                            color: ColorResource.ash,
+                            ImageResourses.like,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 5,
+                          ),
+                          child: Text(
+                            '${datas[indexs].post!.payload!.like_count!} Beats',
+                            style: const TextStyle(
                               color: ColorResource.ash,
-                              ImageResourses.like,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 9,
+                            left: 80,
+                          ),
+                          child: Text(
+                            '${datas[indexs].post!.payload!.share_count!} Shares',
+                            style: const TextStyle(
+                              color: ColorResource.ash,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 8,
+                          ),
+                          child: Image.asset(
+                            ImageResourses.dot,
+                            width: 5,
+                            height: 5,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 11,
+                          ),
+                          child: Text(
+                            '${datas[indexs].post!.payload!.comment_count!} Comments',
+                            style: const TextStyle(
+                              color: ColorResource.ash,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(),
+                    child: Divider(
+                      color: ColorResource.lightGrey,
+                      thickness: 0.5,
+                    ),
+                  ),
+                  IntrinsicHeight(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 2,
+                        bottom: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 12,
+                              right: 5,
+                            ),
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.only(left: 5),
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () {
+                                viewModel.like(datas[indexs].post!.payload!);
+                              },
+                              icon: datas[indexs].post!.payload!.is_like!
+                                  ? Image.asset(
+                                      ImageResourses.like,
+                                      color: Colors.blue,
+                                    )
+                                  : Image.asset(ImageResourses.like,
+                                      color: ColorResource.ash),
+                              label: CustomText(
+                                S.of(context).like,
+                                fontSize: 14,
+                                color: ColorResource.lightGrey,
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              right: 28,
+                            ),
+                            child: VerticalDivider(
+                              color: ColorResource.lightGrey,
+                              thickness: 0.5,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                              left: 5,
+                              right: 10,
                             ),
-                            child: Text(
-                              '${datas[indexs].post!.payload!.like_count!} Beats',
-                              style: const TextStyle(
-                                color: ColorResource.ash,
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.only(left: 5),
+                                textStyle: const TextStyle(fontSize: 20),
                               ),
+                              onPressed: () {},
+                              icon: Image.asset(ImageResourses.comment,
+                                  color: ColorResource.ash),
+                              label: CustomText(
+                                S.of(context).comment,
+                                fontSize: 14,
+                                color: ColorResource.lightGrey,
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              right: 10,
+                            ),
+                            child: VerticalDivider(
+                              color: ColorResource.lightGrey,
+                              thickness: 0.5,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                               right: 9,
-                              left: 80,
                             ),
-                            child: Text(
-                              '${datas[indexs].post!.payload!.share_count!} Shares',
-                              style: const TextStyle(
-                                color: ColorResource.ash,
+                            child: TextButton.icon(
+                              icon: Image.asset(ImageResourses.share,
+                                  color: ColorResource.ash),
+                              label: CustomText(
+                                S.of(context).share,
+                                fontSize: 14,
+                                color: ColorResource.lightGrey,
                               ),
+                              onPressed: () {
+                                viewModel.share(datas[indexs].post!.payload!);
+                              },
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 8,
-                            ),
-                            child: Image.asset(
-                              ImageResourses.dot,
-                              width: 5,
-                              height: 5,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 11,
-                            ),
-                            child: Text(
-                              '${datas[indexs].post!.payload!.comment_count!} Comments',
-                              style: const TextStyle(
-                                color: ColorResource.ash,
-                              ),
-                            ),
+                          const SizedBox(
+                            width: 5,
                           ),
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(),
-                      child: Divider(
-                        color: ColorResource.lightGrey,
-                        thickness: 0.5,
-                      ),
-                    ),
-                    IntrinsicHeight(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 2,
-                          bottom: 10,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 12,
-                                right: 5,
-                              ),
-                              child: TextButton.icon(
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.only(left: 5),
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {
-                                  viewModel.like(datas[indexs].post!.payload!);
-                                },
-                                icon: datas[indexs].post!.payload!.is_like!
-                                    ? Image.asset(
-                                        ImageResourses.like,
-                                        color: Colors.blue,
-                                      )
-                                    : Image.asset(ImageResourses.like,
-                                        color: ColorResource.ash),
-                                label: CustomText(
-                                  S.of(context).like,
-                                  fontSize: 14,
-                                  color: ColorResource.lightGrey,
-                                ),
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(
-                                right: 28,
-                              ),
-                              child: VerticalDivider(
-                                color: ColorResource.lightGrey,
-                                thickness: 0.5,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 10,
-                              ),
-                              child: TextButton.icon(
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.only(left: 5),
-                                  textStyle: const TextStyle(fontSize: 20),
-                                ),
-                                onPressed: () {},
-                                icon: Image.asset(ImageResourses.comment,
-                                    color: ColorResource.ash),
-                                label: CustomText(
-                                  S.of(context).comment,
-                                  fontSize: 14,
-                                  color: ColorResource.lightGrey,
-                                ),
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(
-                                right: 10,
-                              ),
-                              child: VerticalDivider(
-                                color: ColorResource.lightGrey,
-                                thickness: 0.5,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                right: 9,
-                              ),
-                              child: TextButton.icon(
-                                icon: Image.asset(ImageResourses.share,
-                                    color: ColorResource.ash),
-                                label: CustomText(
-                                  S.of(context).share,
-                                  fontSize: 14,
-                                  color: ColorResource.lightGrey,
-                                ),
-                                onPressed: () {
-                                  viewModel.share(datas[indexs].post!.payload!);
-                                },
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ]),
-          );
-        });
+                  ),
+                ],
+              ),
+            )
+          ]),
+        );
+      },
+    );
   }
 }
 
@@ -660,10 +658,11 @@ class TextContainer extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 50,
                     decoration: const BoxDecoration(
-                        color: ColorResource.light,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10.0),
-                        )),
+                      color: ColorResource.light,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                    ),
                     child: const Padding(
                       padding: EdgeInsets.only(left: 15, top: 20),
                       child: CustomText('Write Something here...',
@@ -703,7 +702,6 @@ class Media extends StatelessWidget {
         if (snapshot!.status == Status.LOADING) {
           return Column(children: const [CircularProgressIndicator()]);
         }
-
         final List<Data> datas = snapshot.data!;
 
         return Padding(

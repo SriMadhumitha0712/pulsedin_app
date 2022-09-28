@@ -232,7 +232,6 @@ class _RightPanel extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           viewModel.triggerLogin();
-                          context.beamToNamed('/feed');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
